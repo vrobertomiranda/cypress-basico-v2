@@ -1,4 +1,6 @@
 /// <reference types="Cypress" />
+/// <reference types="cypress-iframe" />
+import "cypress-iframe";
 
 describe('Central de Atendimento ao Cliente TAT', function() {
     beforeEach(function() {
@@ -80,5 +82,16 @@ describe('Central de Atendimento ao Cliente TAT', function() {
 
     })
 
+    it('Exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigatórios', function() {
+        cy.get('button[type="submit"]').click()
+        
+        cy.get('.error').should('be.visible')
+
+    })
+
+    it('Envia o formulário com sucesso usando um comando customizado', function() {
+        cy.preenchendoCamposObrigatoriosEnviandoDados() // esse comando preenchendoCamposObrigatoriosEnviandoDados é um comando customizado, parametrizado no arquivo
+        cy.get('.success').should('be.visible')         // commands.js dentro do projeto de Curso Cypress Básico  
+    })
 
 })

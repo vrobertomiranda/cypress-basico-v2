@@ -1,25 +1,10 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('preenchendoCamposObrigatoriosEnviandoDados', function() {
+
+    cy.get('#firstName').type('Vinicius')
+    cy.get('#lastName').type('Miranda')
+    cy.get('#email').type('vrobertomiranda@gmail.com')
+    cy.get('#open-text-area').type('Texto')
+    cy.get('button[type="submit"]').click() // o arquivo commands.js serve para criar comandos que serão utilizados em vários momentos dentro de um teste automatizado
+                                            // neste exemplo aqui, trata-se de preencher automaticamente os campos obrigatórios dentro da aplicação CAC-TAT
+
+})
