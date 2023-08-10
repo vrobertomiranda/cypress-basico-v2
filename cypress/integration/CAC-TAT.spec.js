@@ -22,7 +22,9 @@ describe('Central de Atendimento ao Cliente TAT', function() {
         cy.get('#open-text-area').type(textoLongo, {delay: 0}) // a propriedade .type usando o objeto {delay} indica quão rapido ou devagar vai ser a inserção do dado
                                                                // nesse exemplo a constante textoLongo será digitada em 50 milesegundos, ou seja, quanto maior o valor '0'
                                                                // mais demorado será para finalizar o teste
-        cy.get('button[type="submit"]').click()
+        cy.contains('button', 'Enviar').click() //há duas forma de localizar um referido botão pra a ação de clicar: cy.contains('button', 'Enviar').click() ou cy.get('button[type="submit"]').click().
+                                                //A primeira localiza um seletor através do nome dele ('button' e com nome 'Enviar') 
+                                                //Já a segunda é localizado pelo a ação de "submit". Qualquer uma das duas está correto
         
         cy.get('.success').should('be.visible')
     })
@@ -32,7 +34,9 @@ describe('Central de Atendimento ao Cliente TAT', function() {
         cy.get('#lastName').type('Miranda')
         cy.get('#email').type('vrobertomiranda.gmail.com.br')
         cy.get('#open-text-area').type('Texto')
-        cy.get('button[type="submit"]').click()
+        cy.contains('button', 'Enviar').click() //há duas forma de localizar um referido botão pra a ação de clicar: cy.contains('button', 'Enviar').click() ou cy.get('button[type="submit"]').click().
+                                                //A primeira localiza um seletor através do nome dele ('button' e com nome 'Enviar') 
+                                                //Já a segunda é localizado pelo a ação de "submit". Qualquer uma das duas está correto
         
         cy.get('.error').should('be.visible') //Usando a classe .error estamos montando um caso aonde um valor, caso seja informado de forma inválida em determinado campo
                                               //que ilustre ao QA que barrou com sucesso o envio do dado pois determinado campo está com o valor não esperado
@@ -50,7 +54,9 @@ describe('Central de Atendimento ao Cliente TAT', function() {
         cy.get('#email').type('vrobertomiranda@gmail.com')
         cy.get('#phone-checkbox').click()
         cy.get('#open-text-area').type('Texto')
-        cy.get('button[type="submit"]').click()
+        cy.contains('button', 'Enviar').click() //há duas forma de localizar um referido botão pra a ação de clicar: cy.contains('button', 'Enviar').click() ou cy.get('button[type="submit"]').click().
+                                                //A primeira localiza um seletor através do nome dele ('button' e com nome 'Enviar') 
+                                                //Já a segunda é localizado pelo a ação de "submit". Qualquer uma das duas está correto
         
         cy.get('.error').should('be.visible')
     })
@@ -83,7 +89,9 @@ describe('Central de Atendimento ao Cliente TAT', function() {
     })
 
     it('Exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigatórios', function() {
-        cy.get('button[type="submit"]').click()
+        cy.contains('button', 'Enviar').click() //há duas forma de localizar um referido botão pra a ação de clicar: cy.contains('button', 'Enviar').click() ou cy.get('button[type="submit"]').click().
+                                                //A primeira localiza um seletor através do nome dele ('button' e com nome 'Enviar') 
+                                                //Já a segunda é localizado pelo a ação de "submit". Qualquer uma das duas está correto
         
         cy.get('.error').should('be.visible')
 
